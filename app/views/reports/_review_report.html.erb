@@ -59,7 +59,6 @@
 			
 			<!-- added class attribute and span tag to extract full name and unityID of the user for scraping (Used in export to CSV functionality) -->
             <td>
-              <!--%= link_to user.name(session[:ip]), impersonate_impersonate_path(:user => {:name => user.name(session[:ip])}), :method => :post %-->
               <%= link_to user.name, :controller => 'popup', :action => 'reviewer_details_popup', :id => r.id, :assignment_id=>@id %>
               (<%= user.fullname(session[:ip]) %>)
             </td>
