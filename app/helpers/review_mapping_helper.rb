@@ -326,7 +326,7 @@ module ReviewMappingHelper
     @review_responses = Response.where(["map_id IN (?)", @review_response_map_ids])
     @rspan = @review_responses.length
   end
-  
+
   #
   # for calibration report
   #
@@ -339,6 +339,12 @@ module ReviewMappingHelper
       css_class = 'c1'
     end
     css_class
+  end
+
+  #returns true if the review response's visibility is public or published else returns false. (Visibility public or published means student
+  #has given consent to make his reviews public.)
+  def visibility_public?(response_map)
+    Response.where(map_id: response_map.id, visibility: ["public","published"]).exists?
   end
 
   class ReviewStrategy
